@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f1e9">
+  <title>ФотоГости — ваши общие воспоминания</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./">Фото<span>Гости</span></a>
+    <a class="top-link" href="#how">Как это работает</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">ВАШ ПРАЗДНИК • ВАШИ ВОСПОМИНАНИЯ</p>
+        <h1>Все фотографии<br>праздника — <em>в одном месте</em></h1>
+        <p class="intro">Поделитесь ссылкой или QR-кодом с гостями. Они смогут загружать фотографии прямо со своих телефонов — без регистрации и установки приложения.</p>
+        <a class="button primary" href="#create">Создать альбом</a>
+      </div>
+      <div class="hero-art" aria-label="Декоративная композиция">
+        <div class="photo-card card-one"><div class="photo-placeholder">♥</div><span>Моменты вместе</span></div>
+        <div class="photo-card card-two"><div class="photo-placeholder">✦</div><span>День, который запомнится</span></div>
+        <div class="round-stamp">НАШИ<br>ИСТОРИИ</div>
+      </div>
+    </section>
+
+    <section class="steps" id="how">
+      <div><b>01</b><h3>Создайте альбом</h3><p>Укажите название вашего праздника.</p></div>
+      <div><b>02</b><h3>Поделитесь QR-кодом</h3><p>Разместите его на столах или отправьте гостям.</p></div>
+      <div><b>03</b><h3>Соберите фото</h3><p>Гости загружают снимки, а вы видите их в общей галерее.</p></div>
+    </section>
+
+    <section class="create-section" id="create">
+      <div class="section-heading">
+        <p class="eyebrow">НАЧНЁМ С ВАШЕГО СОБЫТИЯ</p>
+        <h2>Создать фотогалерею</h2>
+        <p>Для создания альбома потребуется ключ администратора, который настраивается при подключении сервера.</p>
+      </div>
+      <form id="create-form" class="panel">
+        <label>Название события<input id="event-title" required maxlength="80" placeholder="Например, Свадьба Максима и Анны"></label>
+        <label>Дата события<input id="event-date" type="date"></label>
+        <label>Ключ администратора<input id="admin-key" type="password" required autocomplete="off" placeholder="Ключ, заданный в Cloudflare"></label>
+        <button class="button primary full" type="submit">Создать альбом</button>
+        <p id="create-status" class="status" role="status"></p>
+      </form>
+      <div id="created-album" class="panel result hidden">
+        <div><p class="eyebrow">АЛЬБОМ СОЗДАН</p><h3 id="created-title"></h3><p>Отправьте гостям эту ссылку или покажите QR-код.</p></div>
+        <img id="qr-image" alt="QR-код альбома" width="180" height="180">
+        <div class="share-row"><input id="share-url" readonly aria-label="Ссылка на альбом"><button id="copy-link" class="button secondary" type="button">Копировать</button></div>
+        <a id="open-album" class="button primary full" href="#">Открыть галерею</a>
+      </div>
+    </section>
+
+    <section id="album-section" class="album-section hidden">
+      <div class="gallery-head">
+        <div><p class="eyebrow">ОБЩАЯ ГАЛЕРЕЯ</p><h2 id="album-heading">Фотографии гостей</h2><p id="album-subtitle" class="muted"></p></div>
+        <button id="refresh-gallery" class="button secondary" type="button">Обновить</button>
+      </div>
+      <div class="upload-panel panel">
+        <div><h3>Добавить фотографии</h3><p>Выберите снимки на телефоне. Можно загрузить несколько фотографий за раз.</p></div>
+        <label class="button primary upload-button">Выбрать фотографии<input id="photo-input" type="file" accept="image/jpeg,image/png,image/webp" multiple></label>
+        <p id="upload-status" class="status" role="status"></p>
+      </div>
+      <div id="gallery" class="gallery"></div>
+      <p id="gallery-empty" class="empty-state hidden">Пока фотографий нет. Станьте первым, кто добавит снимок!</p>
+    </section>
+
+    <footer><span class="brand">Фото<span>Гости</span></span><p>Ваш праздник. Тысячи воспоминаний.</p></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
